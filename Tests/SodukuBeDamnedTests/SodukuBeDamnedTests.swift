@@ -8,7 +8,7 @@ final class SodukuBeDamnedTests: XCTestCase {
         // results.
         var board = Board()
         board.box5.space4 = 5
-        XCTAssertEqual(board.box5.space4, 5)
+        XCTAssertEqual(board[box: 4].space4, 5)
     }
 
     static var allTests = [

@@ -38,4 +38,16 @@ public struct Board {
     public var box7 = Box()
     public var box8 = Box()
     public var box9 = Box()
+    
+    var boxes: [Box] {
+        return [box1, box2, box3, box4, box5, box6, box7, box8, box9]
+    }
+    
+    public subscript(box rowIndex: Int) -> Box {
+        guard rowIndex >= 0 && rowIndex < 10 else {
+            return Box()
+        }
+        
+        return boxes[rowIndex]
+    }
 }
