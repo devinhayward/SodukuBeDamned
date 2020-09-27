@@ -2,7 +2,7 @@ import XCTest
 @testable import SodukuBeDamned
 
 final class SodukuBeDamnedTests: XCTestCase {
-    func testExample() {
+    func testBoardSet() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
@@ -30,6 +30,6 @@ final class SodukuBeDamnedTests: XCTestCase {
     
 
     static var allTests = [
-        ("testExample", testExample), ("testRow2", testRow2), ("testRow3", testRow3)
+        ("testBoardSet", testBoardSet), ("testRow2", testRow2), ("testRow3", testRow3)
     ]
 }
