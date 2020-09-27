@@ -75,10 +75,35 @@ final class SodukuBeDamnedTests: XCTestCase {
         XCTAssertEqual(board.Row9(), [7,0,0,0,8,0,0,0,9])
     }
     
+    func testCol1() {
+        var board = Board()
+        board.box1.space1 = 1
+        board.box4.space4 = 4
+        board.box7.space7 = 7
+        XCTAssertEqual(board.Col1(), [1,0,0,0,4,0,0,0,7])
+    }
+    
+    func testCol2() {
+        var board = Board()
+        board.box1.space2 = 2
+        board.box4.space5 = 5
+        board.box7.space8 = 8
+        XCTAssertEqual(board.Col2(), [2,0,0,0,5,0,0,0,8])
+    }
+    
+    func testCol3() {
+        var board = Board()
+        board.box1.space3 = 3
+        board.box4.space6 = 6
+        board.box7.space9 = 9
+        XCTAssertEqual(board.Col3(), [3,0,0,0,6,0,0,0,9])
+    }
+    
 
     static var allTests = [
         ("testBoardSet", testBoardSet), ("testRow2", testRow2), ("testRow3", testRow3),
         ("testRow4", testRow4), ("testRow5", testRow5), ("testRow6", testRow6),
-        ("testRow7", testRow7), ("testRow8", testRow8), ("testRow9", testRow9)
+        ("testRow7", testRow7), ("testRow8", testRow8), ("testRow9", testRow9),
+        ("testCol1", testCol1), ("testCol2", testCol2), ("testCol3", testCol3)
     ]
 }
