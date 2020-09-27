@@ -1,16 +1,16 @@
 struct Box {
     typealias Space = Int
-    var space1: Space = 0
-    var space2: Space = 0
-    var space3: Space = 0
-    var space4: Space = 0
-    var space5: Space = 0
-    var space6: Space = 0
-    var space7: Space = 0
-    var space8: Space = 0
-    var space9: Space = 0
+    var space1: Space
+    var space2: Space
+    var space3: Space
+    var space4: Space
+    var space5: Space
+    var space6: Space
+    var space7: Space
+    var space8: Space
+    var space9: Space
     
-    init(space1: Space, space2: Space, space3: Space, space4: Space, space5: Space, space6: Space, space7: Space, space8: Space, space9: Space) {
+    init(space1: Space = 0, space2: Space = 0, space3: Space = 0, space4: Space = 0, space5: Space = 0, space6: Space = 0, space7: Space = 0, space8: Space = 0, space9: Space = 0) {
         self.space1 = space1
         self.space2 = space2
         self.space3 = space3
