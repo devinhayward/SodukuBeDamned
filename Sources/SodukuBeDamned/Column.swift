@@ -43,6 +43,18 @@ public extension Board {
         return final
     }
     
+    func Col4() -> [Int] {
+        let colA = [box2.space1, box2.space4, box2.space7]
+        let colB = [box5.space1, box5.space4, box5.space7]
+        let colC = [box8.space1, box8.space4, box8.space7]
+        
+        var final = colA
+        final.append(contentsOf: colB)
+        final.append(contentsOf: colC)
+        
+        return final
+    }
+    
     
     
 }
