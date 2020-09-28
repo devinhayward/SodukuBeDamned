@@ -24,7 +24,7 @@ public extension Board {
     
     
     
-    //Fill a row
+    //Fill a row/col/box
     func fillRowOrCol(_ rowColOriginal: [Int]) -> [Int] {
         
         var rowToReturn = rowColOriginal
@@ -44,12 +44,14 @@ public extension Board {
         return rowToReturn
     }
     
-    
-    //Fill a column
-    
-    
-    
-    //Fill a box
+    // Mutating function to replace existing row/col/box with newly filled version
+    // Need to be told which row/col/box -> default 0 and check for this
+    mutating func updateBoard(row: Int = 0, col: Int = 0, box: Int = 0) {
+        
+        
+        
+        
+    }
     
     
     

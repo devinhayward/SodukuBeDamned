@@ -124,6 +124,21 @@ final class SodukuBeDamnedTests: XCTestCase {
         XCTAssertEqual(board.fillRowOrCol(board.Col3()), [3,1,2,4,6,5,8,9,7])
     }
     
+    // Fill row1 and col1 and then fill out box 1
+    func testBoxFill() {
+        var board = Board()
+        // Row 1
+        board.box1.space1 = 1
+        board.box2.space2 = 4
+        board.box3.space3 = 7
+        let newRow = board.fillRowOrCol(board.Row1())
+        
+        // Col 1
+        //space1 already filled above
+        board.box4.space4 = 4
+        board.box7.space7 = 7
+        XCTAssertEqual(board.fillRowOrCol(board.Col3()), [3,1,2,4,6,5,8,9,7])
+    }
     
     
     
