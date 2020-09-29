@@ -132,18 +132,27 @@ final class SodukuBeDamnedTests: XCTestCase {
         board.box2.space2 = 4
         board.box3.space3 = 7
         let newRow = board.fillRowOrCol(board.Row1())
+        board.updateBoard(data: newRow, row: 1)
         
         // Col 1
-        //space1 already filled above
+        // space1 already filled above
         board.box4.space4 = 4
         board.box7.space7 = 7
+        let newCol = board.fillRowOrCol(board.Col1())
+        board.updateBoard(data: newCol, col: 1)
+        
+        // fill out the rest of Box 1
+        // box1 is currently [1,0,0,0,4,0,0,0,7] by my calc
+        // box1 will be [1,2,3,5,4,6,8,9,7] when filled; by my calc
+        
+        let newBox = board.fillRowOrCol(board[box: 1].BoxSpaceArray())
+        board.updateBoard(data: newBox, box: 1)
+        // note need to write the function to update the Box1!!!!!!!!
+        
         XCTAssertEqual(board.fillRowOrCol(board.Col3()), [3,1,2,4,6,5,8,9,7])
     }
     
-    
-    
-    
-    
+
 
     static var allTests = [
         ("testBoardSet", testBoardSet), ("testRow2", testRow2), ("testRow3", testRow3),
@@ -151,6 +160,6 @@ final class SodukuBeDamnedTests: XCTestCase {
         ("testRow7", testRow7), ("testRow8", testRow8), ("testRow9", testRow9),
         ("testCol1", testCol1), ("testCol2", testCol2), ("testCol3", testCol3),
         ("testCol4", testCol4),
-        ("testRowFill", testRowFill), ("testColFill", testColFill)
+        ("testRowFill", testRowFill), ("testColFill", testColFill), ("textBoxFill", testBoxFill)
     ]
 }
