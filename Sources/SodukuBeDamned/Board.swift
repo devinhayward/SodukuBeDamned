@@ -22,6 +22,31 @@ public struct Box {
         self.space9 = space9
     }
     
+    var spaces: [Space] {
+        return [space1, space2, space3, space4, space5, space6, space7, space8, space9]
+    }
+    
+    public subscript(BoxSpace spaceIndex: Int) -> Space {
+        
+        get {
+            guard spaceIndex >= 0 && spaceIndex < 9 else {
+                return Box().space1
+            }
+            
+            return spaces[spaceIndex]
+        }
+        
+        set {
+            guard spaceIndex >= 0 && spaceIndex < 9 else {
+                return
+            }
+            var item = spaces[spaceIndex]
+            item = newValue
+        }
+        
+        
+    }
+    
     
     func BoxSpaceArray() -> [Space] {
         return [space1, space2, space3, space4, space5, space6, space7, space8, space9]

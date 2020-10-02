@@ -193,6 +193,16 @@ public extension Board {
                 box8.space1 = data[6]
                 box8.space4 = data[7]
                 box8.space7 = data[8]
+            case 5:
+                box2.space2 = data[0]
+                box2.space5 = data[1]
+                box2.space8 = data[2]
+                box5.space2 = data[3]
+                box5.space5 = data[4]
+                box5.space8 = data[5]
+                box8.space2 = data[6]
+                box8.space5 = data[7]
+                box8.space8 = data[8]
             default:
                 box3.space3 = data[0]
                 box3.space6 = data[1]
@@ -206,6 +216,7 @@ public extension Board {
             }
             
             // TODO: the rest of the column and all Box cases
+            // box update should be covered by the setter written into the struct
         }
         
         
