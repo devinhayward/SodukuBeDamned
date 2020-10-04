@@ -8,7 +8,7 @@ final class SodukuBeDamnedTests: XCTestCase {
         // results.
         var board = Board()
         board.box5.space4 = 5
-        XCTAssertEqual(board[box: 4].space4, 5)
+        XCTAssertEqual(board.box5.space4, 5)
     }
     
     func testRow2() {
@@ -128,7 +128,7 @@ final class SodukuBeDamnedTests: XCTestCase {
     func testBoxFill() {
         var board = Board()
         // Row 1
-        board.box1.space1 = 1
+        board.box1.space1 = 2
         board.box2.space2 = 4
         board.box3.space3 = 7
         let newRow = board.fillRowOrCol(board.Row1())
@@ -136,16 +136,16 @@ final class SodukuBeDamnedTests: XCTestCase {
         
         // Col 1
         // space1 already filled above
-        board.box4.space4 = 4
+        board.box4.space7 = 4
         board.box7.space7 = 7
         let newCol = board.fillRowOrCol(board.Col1())
         board.updateBoard(data: newCol, col: 1)
         
         // fill out the rest of Box 1
-        // box1 is currently [1,0,0,0,4,0,0,0,7] by my calc
-        // box1 will be [1,2,3,5,4,6,8,9,7] when filled; by my calc
+        // box1 is currently [2,0,0,4,0,0,0,0,7] by my calc
+        // box1 will be [1,2,3,5,6,4,8,9,7] when filled; by my calc
         
-        let newBox = board.fillRowOrCol(board[box: 1].BoxSpaceArray())
+        let newBox = board.fillRowOrCol(board.box1.BoxSpaceArray())
         board.updateBoard(data: newBox, box: 1)
         // note need to write the function to update the Box1!!!!!!!!
         
