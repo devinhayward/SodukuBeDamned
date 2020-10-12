@@ -25,32 +25,6 @@ public struct Box {
     var spaces: [Space] {
         return [space1, space2, space3, space4, space5, space6, space7, space8, space9]
     }
-    
-    public subscript(BoxSpace spaceIndex: Int) -> Space {
-        
-        get {
-            guard spaceIndex >= 0 && spaceIndex < 9 else {
-                return Box().space1
-            }
-            
-            return spaces[spaceIndex]
-        }
-        
-        set {
-            guard spaceIndex >= 0 && spaceIndex < 9 else {
-                return
-            }
-            var item = spaces[spaceIndex]
-            item = newValue
-        }
-        
-        
-    }
-    
-    
-    func BoxSpaceArray() -> [Space] {
-        return [space1, space2, space3, space4, space5, space6, space7, space8, space9]
-    }
 }
 
 public struct Board {
@@ -64,6 +38,23 @@ public struct Board {
     public var box8 = Box()
     public var box9 = Box()
     
+    let initialState: [Box]
+    
+    // initialze with a given board state
+    public init(givenBox1: Box, givenBox2: Box, givenBox3: Box, givenBox4: Box, givenBox5: Box, givenBox6: Box, givenBox7: Box, givenBox8: Box, givenBox9: Box) {
+        self.box1 = givenBox1
+        self.box2 = givenBox2
+        self.box3 = givenBox3
+        self.box4 = givenBox4
+        self.box5 = givenBox5
+        self.box6 = givenBox6
+        self.box7 = givenBox7
+        self.box8 = givenBox8
+        self.box9 = givenBox9
+        
+        self.initialState = [givenBox1, givenBox2, givenBox3, givenBox4, givenBox5, givenBox6, givenBox7, givenBox8, givenBox9]
+    }
+    
     var boxes: [Box] {
         return [box1, box2, box3, box4, box5, box6, box7, box8, box9]
     }
@@ -75,4 +66,28 @@ public struct Board {
         
         return boxes[rowIndex]
     }
+}
+
+public extension Board {
+    enum Boxes: Int {
+        case noBox = 0
+        case box1 = 1
+        case box2, box3, box4, box5, box6, box7, box8, box9
+    }
+    
+    enum Rows: Int {
+        case noRow = 0
+        case row1 = 1
+        case row2, row3, row4, row5, row6, row7, row8, row9
+    }
+    
+    enum Cols: Int {
+        case noCol = 0
+        case col1 = 1
+        case col2, col3, col4, col5, col6, col7, col8, col9
+    }
+    
+    // reset to inital state; used when an invalid state is found elsewhere
+    
+    
 }

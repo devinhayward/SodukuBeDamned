@@ -20,33 +20,90 @@ public extension Board {
     
     
     //Check a box
-    
+    func checkBox(boxNum: Int) -> Bool {
+        
+        var checkSet: Set<Int> = []
+        // loop through the numbers and determine if there are any doubles
+        for num in self[box: boxNum].spaces {
+            let result = checkSet.insert(num)
+            if result.inserted == false {
+                return false
+            }
+        }
+        return true
+    }
     
     
     
     //Fill a row/col/box
-    func fillRowOrCol(_ rowColOriginal: [Int]) -> [Int] {
+    mutating func fillRowOrCol(row: Rows = .noRow, col: Cols = .noCol, box: Boxes = .noBox ) {
         
-        var rowToReturn = rowColOriginal
-        var stack = [1,2,3,4,5,6,7,8,9]
-        
-        //remove from the stack all non-zero numbers in the original row
-        //we need unique numbers only
-        stack.removeAll(where: { rowToReturn.contains($0) })
-        
-        //loop through to find 0s and replace with next number off the stack
-        for idx in 0..<9 {
-            if rowColOriginal[idx] == 0 {
-                rowToReturn[idx] = stack.removeFirst()
-            }
+        // make sure only 1 item is chosen
+        if row != .noRow && col != .noCol || box != .noBox {
+            fatalError("you can only update one at a time")
+        }else if col != .noCol && row != .noRow || box != .noBox {
+            fatalError("you can only update one at a time")
+        }else if box != .noBox && row != .noRow || col != .noCol {
+            fatalError("you can only update one at a time")
         }
         
-        return rowToReturn
+        // function to fill a row or col or box
+        func fillBox(dataRow: [Int]) -> [Int] {
+            var stack = [1,2,3,4,5,6,7,8,9]
+            var rowToReturn = dataRow
+            
+            //remove from the stack all non-zero numbers in the original row
+            //we need unique numbers only
+            stack.removeAll(where: { rowToReturn.contains($0) })
+            
+            //loop through to find 0s and replace with next number off the stack
+            for idx in 0..<9 {
+                if dataRow[idx] == 0 {
+                    rowToReturn[idx] = stack.removeFirst()
+                }
+            }
+            return rowToReturn
+        }
+        
+        // determine the item in question and check the related boxes to make sure they are valid
+        if row == .row1 {
+            if !checkBox(boxNum: 0) || !checkBox(boxNum: 2) || !checkBox(boxNum: 3) {
+                // reset box to original state (which is checked elsewhere for validity)
+            }
+            
+            // fill row1
+            let newRow = fillBox(dataRow: self.Row1)
+            
+            //mutate the state
+            self.box1.space1 = newRow[0]
+            self.box1.space2 = newRow[1]
+            self.box1.space3 = newRow[2]
+            self.box2.space1 = newRow[3]
+            self.box2.space2 = newRow[4]
+            self.box2.space3 = newRow[5]
+            self.box3.space1 = newRow[6]
+            self.box3.space2 = newRow[7]
+            self.box3.space3 = newRow[8]
+        }else if row == .row2 {
+            
+        }else if row == .row3 {
+            
+        }
+        
     }
     
     // Mutating function to replace existing row/col/box with newly filled version
     // Need to be told which row/col/box -> default 0 and check for this
     mutating func updateBoard(data: [Int], row: Int = 0, col: Int = 0, box: Int = 0) {
+        
+        // check if only 1 row, col or box
+        if row != 0 && col != 0 || box != 0 {
+            fatalError("you can only update one at a time")
+        }else if col != 0 && row != 0 || box != 0 {
+            fatalError("you can only update one at a time")
+        }else if box != 0 && row != 0 || col != 0 {
+            fatalError("you can only update one at a time")
+        }
         
         // check if data is correct length
         guard data.count == 9 else {
@@ -54,7 +111,7 @@ public extension Board {
         }
         
         // Update the row in question
-        if row != 0 {
+        if row != 0 && col == 0 && box == 0 {
             switch row {
             case 1:
                 box1.space1 = data[0]
