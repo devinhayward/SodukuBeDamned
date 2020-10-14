@@ -107,21 +107,24 @@ final class SodukuBeDamnedTests: XCTestCase {
         XCTAssertEqual(board.Col4(), [1,0,0,0,4,0,0,0,7])
     }
     
-    //test the solve related functions
+    //test the Filling Row 1
     func testRowFill() {
         var board = Board()
         board.box1.space1 = 1
         board.box2.space2 = 4
         board.box3.space3 = 7
-        XCTAssertEqual(board.fillRowOrCol(board.Row1), [1,2,3,5,4,6,8,9,7])
+        board.fillRowOrCol(row: .row1, col: .noCol, box: .noBox)
+        XCTAssertEqual(board.Row1, [1,2,3,5,4,6,8,9,7])
     }
     
+    // test Filling Col 3
     func testColFill() {
         var board = Board()
         board.box1.space3 = 3
         board.box4.space6 = 6
         board.box7.space9 = 7
-        XCTAssertEqual(board.fillRowOrCol(board.Col3()), [3,1,2,4,6,5,8,9,7])
+        board.fillRowOrCol(row: .noRow, col: .col3, box: .noBox)
+        XCTAssertEqual(board.Col3(), [3,1,2,4,6,5,8,9,7])
     }
     
     // Fill row1 and col1 and then fill out box 1
@@ -131,15 +134,15 @@ final class SodukuBeDamnedTests: XCTestCase {
         board.box1.space1 = 2
         board.box2.space2 = 4
         board.box3.space3 = 7
-        let newRow = board.fillRowOrCol(board.Row1)
-        board.updateBoard(data: newRow, row: 1)
+        // fill/solve row 1 for the above initial values
+        board.fillRowOrCol(row: .row1, col: .noCol, box: .noBox)
         
         // Col 1
         // space1 already filled above
         board.box4.space7 = 8
         board.box7.space7 = 9
-        let newCol = board.fillRowOrCol(board.Col1())
-        board.updateBoard(data: newCol, col: 1)
+        // fill/solve col 1 for the above initial values
+        board.fillRowOrCol(row: .noRow, col: .col1, box: .noBox)
         
         // set row 1
         // row 1 is set to [2,0,0,0,4,0,0,0,7]

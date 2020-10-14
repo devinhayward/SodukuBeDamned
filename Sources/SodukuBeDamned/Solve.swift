@@ -41,10 +41,6 @@ public extension Board {
         // make sure only 1 item is chosen
         if row != .noRow && col != .noCol || box != .noBox {
             fatalError("you can only update one at a time")
-        }else if col != .noCol && row != .noRow || box != .noBox {
-            fatalError("you can only update one at a time")
-        }else if box != .noBox && row != .noRow || col != .noCol {
-            fatalError("you can only update one at a time")
         }
         
         // function to fill a row or col or box
@@ -67,8 +63,20 @@ public extension Board {
         
         // determine the item in question and check the related boxes to make sure they are valid
         if row == .row1 {
-            if !checkBox(boxNum: 0) || !checkBox(boxNum: 2) || !checkBox(boxNum: 3) {
-                // reset box to original state (which is checked elsewhere for validity)
+            // check box 1; 2 & 3
+            if !checkBox(boxNum: 0) {
+                // reset box1 to original state (which is checked elsewhere for validity)
+                self.box1.space1 = self.initialState[0].space1
+                self.box1.space2 = self.initialState[0].space2
+                self.box1.space3 = self.initialState[0].space3
+                self.box1.space4 = self.initialState[0].space4
+                self.box1.space5 = self.initialState[0].space5
+                self.box1.space6 = self.initialState[0].space6
+                self.box1.space7 = self.initialState[0].space7
+                self.box1.space8 = self.initialState[0].space8
+                self.box1.space9 = self.initialState[0].space9
+            }else if !checkBox(boxNum: 1) {
+                
             }
             
             // fill row1

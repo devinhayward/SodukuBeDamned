@@ -28,20 +28,20 @@ public struct Box {
 }
 
 public struct Board {
-    public var box1 = Box()
-    public var box2 = Box()
-    public var box3 = Box()
-    public var box4 = Box()
-    public var box5 = Box()
-    public var box6 = Box()
-    public var box7 = Box()
-    public var box8 = Box()
-    public var box9 = Box()
+    public var box1: Box
+    public var box2: Box
+    public var box3: Box
+    public var box4: Box
+    public var box5: Box
+    public var box6: Box
+    public var box7: Box
+    public var box8: Box
+    public var box9: Box
     
     let initialState: [Box]
     
     // initialze with a given board state
-    public init(givenBox1: Box, givenBox2: Box, givenBox3: Box, givenBox4: Box, givenBox5: Box, givenBox6: Box, givenBox7: Box, givenBox8: Box, givenBox9: Box) {
+    public init(givenBox1: Box = Box(), givenBox2: Box = Box(), givenBox3: Box = Box(), givenBox4: Box = Box(), givenBox5: Box = Box(), givenBox6: Box = Box(), givenBox7: Box = Box(), givenBox8: Box = Box(), givenBox9: Box = Box()) {
         self.box1 = givenBox1
         self.box2 = givenBox2
         self.box3 = givenBox3
