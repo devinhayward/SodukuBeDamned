@@ -117,7 +117,7 @@ final class SodukuBeDamnedTests: XCTestCase {
         XCTAssertEqual(board.Row1, [1,2,3,5,4,6,8,9,7])
     }
     
-    // test Filling Col 3
+    // test Filling Col 3; TODO need to set up for Col 3...right now only in place for Row 1; Test will fail
     func testColFill() {
         var board = Board()
         board.box1.space3 = 3
@@ -128,6 +128,7 @@ final class SodukuBeDamnedTests: XCTestCase {
     }
     
     // Fill row1 and col1 and then fill out box 1
+    // TODO need to write out the fill code for Col 1; Right now not complete; Test will fail!
     func testBoxFill() {
         var board = Board()
         // Row 1

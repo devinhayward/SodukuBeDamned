@@ -1,5 +1,18 @@
 public struct Box {
-    public typealias Space = Int
+    
+    enum SpaceValue: Int {
+        case noValue = 0
+        case one = 1
+        case two, three, four, five, six, seven, eight, nine
+    }
+    
+    public struct Space {
+        var availableValues = [1,2,3,4,5,6,7,8,9]
+        var remainingValues: [Int] = []
+        var currentValue = SpaceValue.noValue.rawValue
+        var finalValue: SpaceValue
+    }
+    
     public var space1: Space
     public var space2: Space
     public var space3: Space
@@ -10,7 +23,7 @@ public struct Box {
     public var space8: Space
     public var space9: Space
     
-    public init(space1: Space = 0, space2: Space = 0, space3: Space = 0, space4: Space = 0, space5: Space = 0, space6: Space = 0, space7: Space = 0, space8: Space = 0, space9: Space = 0) {
+    public init(space1: Int = 0, space2: Int = 0, space3: Int = 0, space4: Int = 0, space5: Int = 0, space6: Int = 0, space7: Int = 0, space8: Int = 0, space9: Int = 0) {
         self.space1 = space1
         self.space2 = space2
         self.space3 = space3
@@ -24,6 +37,12 @@ public struct Box {
     
     var spaces: [Space] {
         return [space1, space2, space3, space4, space5, space6, space7, space8, space9]
+    }
+    
+    mutating func initSpace(givenValue: Int, space: Space) {
+        if initValue != 0 {
+            space.finalValue = givenValue
+        }else { return }
     }
 }
 
