@@ -1,49 +1,49 @@
 public struct Box {
     
-    enum SpaceValue: Int {
-        case noValue = 0
-        case one = 1
-        case two, three, four, five, six, seven, eight, nine
-    }
-    
     public struct Space {
         var availableValues = [1,2,3,4,5,6,7,8,9]
         var remainingValues: [Int] = []
-        var currentValue = SpaceValue.noValue.rawValue
-        var finalValue: SpaceValue
+        var currentValue = 0
+        var finalValue = 0
     }
     
-    public var space1: Space
-    public var space2: Space
-    public var space3: Space
-    public var space4: Space
-    public var space5: Space
-    public var space6: Space
-    public var space7: Space
-    public var space8: Space
-    public var space9: Space
-    
-    public init(space1: Int = 0, space2: Int = 0, space3: Int = 0, space4: Int = 0, space5: Int = 0, space6: Int = 0, space7: Int = 0, space8: Int = 0, space9: Int = 0) {
-        self.space1 = space1
-        self.space2 = space2
-        self.space3 = space3
-        self.space4 = space4
-        self.space5 = space5
-        self.space6 = space6
-        self.space7 = space7
-        self.space8 = space8
-        self.space9 = space9
-    }
+    public var space1 = Space()
+    public var space2 = Space()
+    public var space3 = Space()
+    public var space4 = Space()
+    public var space5 = Space()
+    public var space6 = Space()
+    public var space7 = Space()
+    public var space8 = Space()
+    public var space9 = Space()
     
     var spaces: [Space] {
         return [space1, space2, space3, space4, space5, space6, space7, space8, space9]
     }
     
-    mutating func initSpace(givenValue: Int, space: Space) {
-        if initValue != 0 {
-            space.finalValue = givenValue
-        }else { return }
+    public init(sp1: Int = 0, sp2: Int = 0, sp3: Int = 0, sp4: Int = 0, sp5: Int = 0,  sp6: Int = 0, sp7: Int = 0, sp8: Int = 0, sp9: Int = 0) {
+        
+        self.space1.finalValue = sp1
+        self.space2.finalValue = sp2
+        self.space3.finalValue = sp3
+        self.space4.finalValue = sp4
+        self.space5.finalValue = sp5
+        self.space6.finalValue = sp6
+        self.space7.finalValue = sp7
+        self.space8.finalValue = sp8
+        self.space9.finalValue = sp9
+        
+        // if an inital value is given, this is a permanent final value
+        // must therefore copy over the finalValue to the initialValue
+        
+        for idx in 0..<9 {
+            if spaces[idx].finalValue != 0 {
+                spaces[idx].currentValue = spaces[idx].finalValue
+            }
+        }
     }
+    
+    
 }
 
 public struct Board {
