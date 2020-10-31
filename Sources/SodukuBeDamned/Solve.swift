@@ -7,16 +7,45 @@
 
 public extension Board {
     
-    //define the Rows
+    // if an inital value is given, this is a permanent final value
+    // must therefore copy over the finalValue to the initialValue
+    // function to loop through all the boxes and copy any defined inital values
+    // over to the final value property
+    
+    mutating func hello(board: Board) {
+        
+        for boardIdx in 0..<9 {
+            for spaceIdx in 0..<9 {
+                // grab the current value of the space
+                var currentSpace = board[box: boardIdx].spaces[spaceIdx]
+                // if there is a value; copy over to the finalValue property for that space
+                if currentSpace.currentValue != 0 {
+                    currentSpace.finalValue = currentSpace.currentValue
+                }
+            }
+        }
+    }
     
     
+    //Check the Rows
+    func rowCheck() -> Bool {
+        // assume for now that not solved means on space is currently 0
+        for row in rows {
+            for space in row {
+                if space.currentValue == 0 {
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
     
-    //Check the Row
     
-    
-    
-    //Check the Column
-    
+    //Check the Columns
+    func colCheck() {
+        
+    }
     
     
     //Check a box

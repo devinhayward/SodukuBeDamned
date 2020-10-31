@@ -7,20 +7,85 @@ public struct Box {
         var finalValue = 0
     }
     
-    public var space1 = Space()
-    public var space2 = Space()
-    public var space3 = Space()
-    public var space4 = Space()
-    public var space5 = Space()
-    public var space6 = Space()
-    public var space7 = Space()
-    public var space8 = Space()
-    public var space9 = Space()
+    fileprivate var value = Space()
+
+    public var space1: Space {
+        get {
+            return value
+        }
+        set {
+            value = newValue
+        }
+    }
+    public var space2: Space {
+        get {
+            return value
+        }
+        set {
+            value = newValue
+        }
+    }
+    public var space3: Space {
+        get {
+            return value
+        }
+        set {
+            value = newValue
+        }
+    }
+    public var space4: Space {
+        get {
+            return value
+        }
+        set {
+            value = newValue
+        }
+    }
+    public var space5: Space {
+        get {
+            return value
+        }
+        set {
+            value = newValue
+        }
+    }
+    public var space6: Space {
+        get {
+            return value
+        }
+        set {
+            value = newValue
+        }
+    }
+    public var space7: Space {
+        get {
+            return value
+        }
+        set {
+            value = newValue
+        }
+    }
+    public var space8: Space {
+        get {
+            return value
+        }
+        set {
+            value = newValue
+        }
+    }
+    public var space9: Space {
+        get {
+            return value
+        }
+        set {
+            value = newValue
+        }
+    }
     
     var spaces: [Space] {
         return [space1, space2, space3, space4, space5, space6, space7, space8, space9]
     }
-    
+        
     public init(sp1: Int = 0, sp2: Int = 0, sp3: Int = 0, sp4: Int = 0, sp5: Int = 0,  sp6: Int = 0, sp7: Int = 0, sp8: Int = 0, sp9: Int = 0) {
         
         self.space1.finalValue = sp1
@@ -32,18 +97,34 @@ public struct Box {
         self.space7.finalValue = sp7
         self.space8.finalValue = sp8
         self.space9.finalValue = sp9
-        
-        // if an inital value is given, this is a permanent final value
-        // must therefore copy over the finalValue to the initialValue
-        
-        for idx in 0..<9 {
-            if spaces[idx].finalValue != 0 {
-                spaces[idx].currentValue = spaces[idx].finalValue
-            }
-        }
     }
     
-    
+    subscript(space spaceIndex: Int) -> Space {
+        guard spaceIndex >= 0 && spaceIndex < 10 else {
+            return Space()
+        }
+        
+        switch spaceIndex {
+            case 0:
+                return self.space1
+            case 1:
+                return self.space2
+            case 2:
+                return self.space3
+            case 3:
+                return self.space4
+            case 4:
+                return self.space5
+            case 6:
+                return self.space6
+            case 7:
+                return self.space7
+            case 8:
+                return self.space8
+            default:
+                return self.space9
+        }
+    }
 }
 
 public struct Board {
