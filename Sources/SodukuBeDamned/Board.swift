@@ -129,15 +129,16 @@ public struct Box {
 
 public struct Board {
     
-    // state for the board; a dictionary of boxes; initialized as empty boxes
-    var boxState: [BoxNames: Box] = [BoxNames.box1:Box(), BoxNames.box2:Box(), BoxNames.box3:Box(), BoxNames.box4:Box(), BoxNames.box5:Box(), BoxNames.box6:Box(), BoxNames.box7:Box(), BoxNames.box8:Box(), BoxNames.box9:Box()]
-    
     // need to allow for the user to initialize the state of the board. We will lock this state in for the record and then copy over to the board state
     var initialState: [BoxNames: Box]
     
-    // we are counting on the user to create the necessary 9 box board here
-    mutating func initializeBoard(board: [BoxNames: Box]) {
-        initialState = board
+    // state for the board; a dictionary of boxes
+    public var boxState: [BoxNames: Box]
+    
+    // TODO: write an init that puts everything into place. Need to feed it a dictionary representing the initial state of the board.
+    public init(initialBoard: [BoxNames: Box]) {
+        self.boxState = initialBoard
+        self.initialState = initialBoard
     }
 }
 
@@ -146,16 +147,12 @@ public extension Board {
         case box1, box2, box3, box4, box5, box6, box7, box8, box9
     }
     
-    enum Rows: Int {
-        case noRow = 0
-        case row1 = 1
-        case row2, row3, row4, row5, row6, row7, row8, row9
+    enum Rows: String {
+        case row1, row2, row3, row4, row5, row6, row7, row8, row9
     }
     
-    enum Cols: Int {
-        case noCol = 0
-        case col1 = 1
-        case col2, col3, col4, col5, col6, col7, col8, col9
+    enum Cols: String {
+        case col1, col2, col3, col4, col5, col6, col7, col8, col9
     }
     
     // reset to inital state; used when an invalid state is found elsewhere
