@@ -128,51 +128,22 @@ public struct Box {
 }
 
 public struct Board {
-    public var box1: Box
-    public var box2: Box
-    public var box3: Box
-    public var box4: Box
-    public var box5: Box
-    public var box6: Box
-    public var box7: Box
-    public var box8: Box
-    public var box9: Box
     
-    let initialState: [Box]
+    // state for the board; a dictionary of boxes; initialized as empty boxes
+    var boxState: [BoxNames: Box] = [BoxNames.box1:Box(), BoxNames.box2:Box(), BoxNames.box3:Box(), BoxNames.box4:Box(), BoxNames.box5:Box(), BoxNames.box6:Box(), BoxNames.box7:Box(), BoxNames.box8:Box(), BoxNames.box9:Box()]
     
-    // initialze with a given board state
-    public init(givenBox1: Box = Box(), givenBox2: Box = Box(), givenBox3: Box = Box(), givenBox4: Box = Box(), givenBox5: Box = Box(), givenBox6: Box = Box(), givenBox7: Box = Box(), givenBox8: Box = Box(), givenBox9: Box = Box()) {
-        self.box1 = givenBox1
-        self.box2 = givenBox2
-        self.box3 = givenBox3
-        self.box4 = givenBox4
-        self.box5 = givenBox5
-        self.box6 = givenBox6
-        self.box7 = givenBox7
-        self.box8 = givenBox8
-        self.box9 = givenBox9
-        
-        self.initialState = [givenBox1, givenBox2, givenBox3, givenBox4, givenBox5, givenBox6, givenBox7, givenBox8, givenBox9]
-    }
+    // need to allow for the user to initialize the state of the board. We will lock this state in for the record and then copy over to the board state
+    var initialState: [BoxNames: Box]
     
-    var boxes: [Box] {
-        return [box1, box2, box3, box4, box5, box6, box7, box8, box9]
-    }
-    
-    public subscript(box rowIndex: Int) -> Box {
-        guard rowIndex >= 0 && rowIndex < 10 else {
-            return Box()
-        }
-        
-        return boxes[rowIndex]
+    // we are counting on the user to create the necessary 9 box board here
+    mutating func initializeBoard(board: [BoxNames: Box]) {
+        initialState = board
     }
 }
 
 public extension Board {
-    enum Boxes: Int {
-        case noBox = 0
-        case box1 = 1
-        case box2, box3, box4, box5, box6, box7, box8, box9
+    enum BoxNames: String {
+        case box1, box2, box3, box4, box5, box6, box7, box8, box9
     }
     
     enum Rows: Int {
