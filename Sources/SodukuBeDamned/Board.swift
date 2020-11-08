@@ -130,7 +130,7 @@ public struct Box {
 public struct Board {
     
     // need to allow for the user to initialize the state of the board. We will lock this state in for the record and then copy over to the board state
-    var initialState: [BoxNames: Box]
+    let initialState: [BoxNames: Box]
     
     // state for the board; a dictionary of boxes
     public var boxState: [BoxNames: Box]
