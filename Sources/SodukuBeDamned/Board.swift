@@ -7,86 +7,20 @@ public struct Box {
         var finalValue = 0
     }
     
-    fileprivate var value = Space()
-
-    public var space1: Space {
-        get {
-            return value
-        }
-        set {
-            value = newValue
-        }
-    }
-    public var space2: Space {
-        get {
-            return value
-        }
-        set {
-            value = newValue
-        }
-    }
-    public var space3: Space {
-        get {
-            return value
-        }
-        set {
-            value = newValue
-        }
-    }
-    public var space4: Space {
-        get {
-            return value
-        }
-        set {
-            value = newValue
-        }
-    }
-    public var space5: Space {
-        get {
-            return value
-        }
-        set {
-            value = newValue
-        }
-    }
-    public var space6: Space {
-        get {
-            return value
-        }
-        set {
-            value = newValue
-        }
-    }
-    public var space7: Space {
-        get {
-            return value
-        }
-        set {
-            value = newValue
-        }
-    }
-    public var space8: Space {
-        get {
-            return value
-        }
-        set {
-            value = newValue
-        }
-    }
-    public var space9: Space {
-        get {
-            return value
-        }
-        set {
-            value = newValue
-        }
-    }
+    public var space1 = Space()
+    public var space2 = Space()
+    public var space3 = Space()
+    public var space4 = Space()
+    public var space5 = Space()
+    public var space6 = Space()
+    public var space7 = Space()
+    public var space8 = Space()
+    public var space9 = Space()
     
-    var spaces: [Space] {
-        return [space1, space2, space3, space4, space5, space6, space7, space8, space9]
-    }
-        
-    public init(sp1: Int = 0, sp2: Int = 0, sp3: Int = 0, sp4: Int = 0, sp5: Int = 0,  sp6: Int = 0, sp7: Int = 0, sp8: Int = 0, sp9: Int = 0) {
+    public var spaces: [String: Space]
+    
+    // allow to initialize the box spaces with a set final value; also provide the spaces Dictionary to access these spaces with the correct Key
+    public init(sp1: Int, sp2: Int, sp3: Int, sp4: Int, sp5: Int, sp6: Int, sp7: Int, sp8: Int, sp9: Int) {
         
         self.space1.finalValue = sp1
         self.space2.finalValue = sp2
@@ -97,33 +31,25 @@ public struct Box {
         self.space7.finalValue = sp7
         self.space8.finalValue = sp8
         self.space9.finalValue = sp9
+        
+        self.spaces = ["space1": self.space1, "space2": self.space2, "space3": self.space3, "space4": self.space4, "space5": self.space5,
+                       "space6": self.space6, "space7": self.space7, "space8": self.space8, "space9": self.space9]
     }
     
-    subscript(space spaceIndex: Int) -> Space {
-        guard spaceIndex >= 0 && spaceIndex < 10 else {
-            return Space()
-        }
+    // allow to initialize with a zero box
+    public init() {
+        self.space1 = Space()
+        self.space2 = Space()
+        self.space3 = Space()
+        self.space4 = Space()
+        self.space5 = Space()
+        self.space6 = Space()
+        self.space7 = Space()
+        self.space8 = Space()
+        self.space9 = Space()
         
-        switch spaceIndex {
-            case 0:
-                return self.space1
-            case 1:
-                return self.space2
-            case 2:
-                return self.space3
-            case 3:
-                return self.space4
-            case 4:
-                return self.space5
-            case 6:
-                return self.space6
-            case 7:
-                return self.space7
-            case 8:
-                return self.space8
-            default:
-                return self.space9
-        }
+        self.spaces = ["space1": self.space1, "space2": self.space2, "space3": self.space3, "space4": self.space4, "space5": self.space5,
+                       "space6": self.space6, "space7": self.space7, "space8": self.space8, "space9": self.space9]
     }
 }
 
@@ -135,7 +61,7 @@ public struct Board {
     // state for the board; a dictionary of boxes
     public var boxState: [BoxNames: Box]
     
-    // TODO: write an init that puts everything into place. Need to feed it a dictionary representing the initial state of the board.
+    // DONE: write an init that puts everything into place. Need to feed it a dictionary representing the initial state of the board.
     public init(initialBoard: [BoxNames: Box]) {
         self.boxState = initialBoard
         self.initialState = initialBoard

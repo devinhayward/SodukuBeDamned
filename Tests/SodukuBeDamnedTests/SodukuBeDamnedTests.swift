@@ -7,8 +7,7 @@ final class SodukuBeDamnedTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
         
-        var box5 = Box()
-        box5.space4.finalValue = 5
+        let box5 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 5, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 0)
         let dmhInitialState = [Board.BoxNames.box1:Box(), Board.BoxNames.box2:Box(), Board.BoxNames.box3:Box(), Board.BoxNames.box4:Box(),
                                Board.BoxNames.box5:box5, Board.BoxNames.box6:Box(), Board.BoxNames.box7:Box(), Board.BoxNames.box8:Box(), Board.BoxNames.box9:Box()]
         
@@ -18,13 +17,9 @@ final class SodukuBeDamnedTests: XCTestCase {
     }
     
     func testRow2() {
-        var box1 = Box()
-        var box2 = Box()
-        var box3 = Box()
-        
-        box1.space4.finalValue = 4
-        box2.space5.finalValue = 5
-        box3.space6.finalValue = 6
+        let box1 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 4, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 0)
+        let box2 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 0, sp5: 5, sp6: 0, sp7: 0, sp8: 0, sp9: 0)
+        let box3 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 6, sp7: 0, sp8: 0, sp9: 0)
         
         let dmhInitialState = [Board.BoxNames.box1:box1, Board.BoxNames.box2:box2, Board.BoxNames.box3:box3, Board.BoxNames.box4:Box(),
                                Board.BoxNames.box5:Box(), Board.BoxNames.box6:Box(), Board.BoxNames.box7:Box(), Board.BoxNames.box8:Box(), Board.BoxNames.box9:Box()]
