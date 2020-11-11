@@ -45,18 +45,18 @@ public extension Board {
         return final
     }
     
-//    var Row4: Row {
-//        let rowA = [box4.space1, box4.space2, box4.space3]
-//        let rowB = [box5.space1, box5.space2, box5.space3]
-//        let rowC = [box6.space1, box6.space2, box6.space3]
-//        
-//        var final = rowA
-//        final.append(contentsOf: rowB)
-//        final.append(contentsOf: rowC)
-//        
-//        return final
-//    }
-//    
+    var Row4: Row {
+        let rowA = [boxState[BoxNames.box4]!.space1,boxState[BoxNames.box4]!.space2,boxState[BoxNames.box4]!.space3]
+        let rowB = [boxState[BoxNames.box5]!.space1,boxState[BoxNames.box5]!.space2,boxState[BoxNames.box5]!.space3]
+        let rowC = [boxState[BoxNames.box6]!.space1,boxState[BoxNames.box6]!.space2,boxState[BoxNames.box6]!.space3]
+        
+        var final = rowA
+        final.append(contentsOf: rowB)
+        final.append(contentsOf: rowC)
+        
+        return final
+    }
+    
 //    var Row5: Row {
 //        let rowA = [box4.space4, box4.space5, box4.space6]
 //        let rowB = [box5.space4, box5.space5, box5.space6]

@@ -3,9 +3,7 @@ import XCTest
 
 final class SodukuBeDamnedTests: XCTestCase {
     func testBoardSet() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
+        // Initial test to set up a single final value and check a single space; this is the syntax for checking a single space currently.
         
         let box5 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 5, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 0)
         let dmhInitialState = [Board.BoxNames.box1:Box(), Board.BoxNames.box2:Box(), Board.BoxNames.box3:Box(), Board.BoxNames.box4:Box(),
@@ -26,29 +24,48 @@ final class SodukuBeDamnedTests: XCTestCase {
         
         
         let board = Board(initialBoard: dmhInitialState)
-        print(board.Row2.map({$0.finalValue}))
+        //print(board.Row2.map({$0.finalValue}))
         
         XCTAssertEqual(board.Row2.map({ space in
             return space.finalValue
         }), [4,0,0,0,5,0,0,0,6])
     }
 
-//    func testRow3() {
-//        var board = Board()
-//        board.box1.space7.currentValue = 7
-//        board.box2.space8.currentValue = 8
-//        board.box3.space9.currentValue = 9
-//        XCTAssertEqual(board.Row3, [7,0,0,0,8,0,0,0,9])
-//    }
-//
-//    func testRow4() {
-//        var board = Board()
-//        board.box4.space1.currentValue = 1
-//        board.box5.space2.currentValue = 2
-//        board.box6.space3.currentValue = 3
-//        XCTAssertEqual(board.Row4, [1,0,0,0,2,0,0,0,3])
-//    }
-//
+    func testRow3() {
+        let box1 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 7, sp8: 0, sp9: 0)
+        let box2 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 8, sp9: 0)
+        let box3 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 9)
+        
+        let dmhInitialState = [Board.BoxNames.box1:box1, Board.BoxNames.box2:box2, Board.BoxNames.box3:box3, Board.BoxNames.box4:Box(),
+                               Board.BoxNames.box5:Box(), Board.BoxNames.box6:Box(), Board.BoxNames.box7:Box(), Board.BoxNames.box8:Box(), Board.BoxNames.box9:Box()]
+        
+        let board = Board(initialBoard: dmhInitialState)
+        
+        XCTAssertEqual(board.Row3.map({ space in
+            return space.finalValue
+        }), [7,0,0,0,8,0,0,0,9])
+    }
+
+    func testRow4() {
+        let box4 = Box(sp1: 1, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 0)
+        let box5 = Box(sp1: 0, sp2: 5, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 0)
+        let box6 = Box(sp1: 0, sp2: 0, sp3: 3, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 0)
+        
+        let dmhInitialState = [Board.BoxNames.box1:Box(), Board.BoxNames.box2:Box(), Board.BoxNames.box3:Box(), Board.BoxNames.box4:box4,
+                               Board.BoxNames.box5:box5, Board.BoxNames.box6:box6, Board.BoxNames.box7:Box(), Board.BoxNames.box8:Box(), Board.BoxNames.box9:Box()]
+        
+        let board = Board(initialBoard: dmhInitialState)
+        
+        XCTAssertEqual(board.Row4.map({ space in
+            return space.finalValue
+        }), [1,0,0,0,5,0,0,0,3])
+    }
+
+
+    
+    
+    
+    
 //    func testRow5() {
 //        var board = Board()
 //        board.box4.space4.currentValue = 4
@@ -122,7 +139,7 @@ final class SodukuBeDamnedTests: XCTestCase {
 //    }
 
     static var allTests = [
-        ("testBoardSet", testBoardSet), ("testRow2", testRow2) //, ("testRow3", testRow3),
+        ("testBoardSet", testBoardSet), ("testRow2", testRow2), ("testRow3", testRow3)//,
 //        ("testRow4", testRow4), ("testRow5", testRow5), ("testRow6", testRow6),
 //        ("testRow7", testRow7), ("testRow8", testRow8), ("testRow9", testRow9),
 //        ("testCol1", testCol1), ("testCol2", testCol2), ("testCol3", testCol3),
