@@ -163,46 +163,68 @@ final class SodukuBeDamnedTests: XCTestCase {
         XCTAssertEqual(row1, [1,0,0,0,2,0,0,0,3])
         XCTAssertEqual(row9, [0,2,0,9,0,0,0,0,4])
     }
-    
-    
 
-//    func testCol1() {
-//        var board = Board()
-//        board.box1.space1.currentValue = 1
-//        board.box4.space4.currentValue = 4
-//        board.box7.space7.currentValue = 7
-//        XCTAssertEqual(board.Col1(), [1,0,0,0,4,0,0,0,7])
-//    }
-//
-//    func testCol2() {
-//        var board = Board()
-//        board.box1.space2.currentValue = 2
-//        board.box4.space5.currentValue = 5
-//        board.box7.space8.currentValue = 8
-//        XCTAssertEqual(board.Col2(), [2,0,0,0,5,0,0,0,8])
-//    }
-//
-//    func testCol3() {
-//        var board = Board()
-//        board.box1.space3.currentValue = 3
-//        board.box4.space6.currentValue = 6
-//        board.box7.space9.currentValue = 9
-//        XCTAssertEqual(board.Col3(), [3,0,0,0,6,0,0,0,9])
-//    }
-//
-//    func testCol4() {
-//        var board = Board()
-//        board.box2.space1.currentValue = 1
-//        board.box5.space4.currentValue = 4
-//        board.box8.space7.currentValue = 7
-//        XCTAssertEqual(board.Col4(), [1,0,0,0,4,0,0,0,7])
-//    }
+    func testColumnFunc() {
+        let box1 = Box(sp1: 1, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 2, sp9: 0)
+        let box2 = Box(sp1: 0, sp2: 2, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 4, sp8: 0, sp9: 0)
+        let box3 = Box(sp1: 0, sp2: 0, sp3: 3, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 4)
+        
+        let box4 = Box(sp1: 2, sp2: 0, sp3: 6, sp4: 1, sp5: 9, sp6: 4, sp7: 8, sp8: 1, sp9: 1)
+        let box5 = Box(sp1: 3, sp2: 5, sp3: 9, sp4: 3, sp5: 1, sp6: 5, sp7: 2, sp8: 3, sp9: 2)
+        let box6 = Box(sp1: 4, sp2: 0, sp3: 2, sp4: 0, sp5: 3, sp6: 0, sp7: 1, sp8: 0, sp9: 7)
+        
+        let box7 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 0)
+        let box8 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 5, sp5: 0, sp6: 8, sp7: 9, sp8: 9, sp9: 0)
+        let box9 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 5)
+        
+        let dmhInitialState = [Board.BoxNames.box1:box1, Board.BoxNames.box2:box2, Board.BoxNames.box3:box3,
+                               Board.BoxNames.box4:box4,Board.BoxNames.box5:box5, Board.BoxNames.box6:box6, Board.BoxNames.box7:box7, Board.BoxNames.box8:box8, Board.BoxNames.box9:box9]
+        
+        let board = Board(initialBoard: dmhInitialState)
+        
+        let col1 = board.columns[Board.Cols.col1]!.map { $0.finalValue }
+        let col2 = board.columns[Board.Cols.col2]!.map { $0.finalValue }
+        let col3 = board.columns[Board.Cols.col3]!.map { $0.finalValue }
+        let col4 = board.columns[Board.Cols.col4]!.map { $0.finalValue }
+        //let col5 = board.columns[Board.Cols.col5]!.map { $0.finalValue }
+        //let col6 = board.columns[Board.Cols.col6]!.map { $0.finalValue }
+        //let col7 = board.columns[Board.Cols.col7]!.map { $0.finalValue }
+        //let col8 = board.columns[Board.Cols.col8]!.map { $0.finalValue }
+        //let col9 = board.columns[Board.Cols.col9]!.map { $0.finalValue }
+        
+        XCTAssertEqual(col1, [1,0,0,2,1,8,0,0,0])
+        XCTAssertEqual(col2, [0,0,2,0,9,1,0,0,0])
+        XCTAssertEqual(col3, [0,0,0,6,4,1,0,0,0])
+        XCTAssertEqual(col4, [0,0,4,3,3,2,0,5,9])
+        //XCTAssertEqual(col5, [0,0,0,9,1,3,0,0,0])
+        //XCTAssertEqual(col6, [0,0,0,4,5,0,0,8,0])
+        //XCTAssertEqual(col7, [0,4,0,8,2,1,0,9,0])
+        //XCTAssertEqual(col8, [2,0,0,1,3,0,0,9,0])
+        //XCTAssertEqual(col9, [0,0,4,1,2,7,0,0,5])
+    }
+    
+    // test that the spaces model is working
+    func testSpaces() {
+        let box1 = Box(sp1: 1, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 2, sp9: 0)
+        let box2 = Box(sp1: 0, sp2: 2, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 4, sp8: 0, sp9: 0)
+        let box3 = Box(sp1: 0, sp2: 0, sp3: 3, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 4)
+        
+        let box1Spaces = [box1.space1.finalValue, box1.space2.finalValue, box1.space3.finalValue, box1.space4.finalValue, box1.space5.finalValue, box1.space6.finalValue, box1.space7.finalValue, box1.space8.finalValue, box1.space9.finalValue]
+        let box2Spaces = [box2.space1.finalValue, box2.space2.finalValue, box2.space3.finalValue, box2.space4.finalValue, box2.space5.finalValue, box2.space6.finalValue, box2.space7.finalValue, box2.space8.finalValue, box2.space9.finalValue]
+        let box3Spaces = [box3.space1.finalValue, box3.space2.finalValue, box3.space3.finalValue, box3.space4.finalValue, box3.space5.finalValue, box3.space6.finalValue, box3.space7.finalValue, box3.space8.finalValue, box3.space9.finalValue]
+        
+        XCTAssertEqual(box1Spaces, [1,0,0,0,0,0,0,2,0])
+        XCTAssertEqual(box2Spaces, [0,2,0,0,0,0,4,0,0])
+        XCTAssertEqual(box3Spaces, [0,0,3,0,0,0,0,0,4])
+        
+    }
+
+
 
     static var allTests = [
         ("testBoardSet", testBoardSet), ("testRow2", testRow2), ("testRow3", testRow3),
         ("testRow4", testRow4), ("testRow5", testRow5), ("testRow6", testRow6),
-        ("testRow7", testRow7), ("testRow8", testRow8), ("testRow9", testRow9), ("testRows", testRows)
-//        ("testCol1", testCol1), ("testCol2", testCol2), ("testCol3", testCol3),
-//        ("testCol4", testCol4)
+        ("testRow7", testRow7), ("testRow8", testRow8), ("testRow9", testRow9), ("testRows", testRows),
+        ("testColumnFunc", testColumnFunc), ("testSpaces", testSpaces)
     ]
 }

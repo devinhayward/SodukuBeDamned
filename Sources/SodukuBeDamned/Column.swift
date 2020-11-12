@@ -9,8 +9,8 @@ public extension Board {
     
     func Col1() -> [Box.Space] {
         let colA = [boxState[BoxNames.box1]!.space1,boxState[BoxNames.box1]!.space4,boxState[BoxNames.box1]!.space7]
-        let colB = [boxState[BoxNames.box4]!.space1,boxState[BoxNames.box4]!.space4,boxState[BoxNames.box4]!.space9]
-        let colC = [boxState[BoxNames.box7]!.space1,boxState[BoxNames.box4]!.space4,boxState[BoxNames.box4]!.space9]
+        let colB = [boxState[BoxNames.box4]!.space1,boxState[BoxNames.box4]!.space4,boxState[BoxNames.box4]!.space7]
+        let colC = [boxState[BoxNames.box7]!.space1,boxState[BoxNames.box7]!.space4,boxState[BoxNames.box7]!.space7]
         
         var final = colA
         final.append(contentsOf: colB)
