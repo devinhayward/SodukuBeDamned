@@ -7,24 +7,43 @@
 
 public extension Board {
     
-    // if an inital value is given, this is a permanent final value
-    // must therefore copy over the finalValue to the initialValue
-    // function to loop through all the boxes and copy any defined inital values
-    // over to the final value property
+    // this Function scans through the column and updates the available numbers in each Space
+    // if all the Spaces are set -> Return True
+    // else return false and Update the Data, which will update the UI
+    func updateColumn(col: Board.Cols) {
+        // pass the chosen Column into the dictionary; get back an array of spaces
+        let spaces = columns[col]!
+        var currentColValues = [Int]()
+        
+        // check that no duplicate values have been initialized in the column. Utilize a Set to check this.
+        var set = Set<Int>()
+        for space in spaces.map({ $0.finalValue }) {
+            let num = set.insert(space)
+            
+            if num.inserted == false {
+                fatalError("there was duplicate initial values in this column. That cannot happen!")
+            }
+        }
+        
+        // loop through and check for preChosen values
+        for var space in spaces {
+            if space.finalValue != 0 {
+                space.availableValues.removeAll()
+                currentColValues.append(space.finalValue)
+            }
+        }
+        
+        // now loop through again and adjust the available values array for all empty spaces
+        for var space in spaces {
+            if space.finalValue == 0 {
+                space.availableValues.removeAll(where: { currentColValues.contains($0) })
+                //print(space.availableValues)
+            }
+        }
+    }
+        
+
     
-//    mutating func hello(board: Board) {
-//
-//        for boardIdx in 0..<9 {
-//            for spaceIdx in 0..<9 {
-//                // grab the current value of the space
-//                var currentSpace = board[box: boardIdx].spaces[spaceIdx]
-//                // if there is a value; copy over to the finalValue property for that space
-//                if currentSpace.currentValue != 0 {
-//                    currentSpace.finalValue = currentSpace.currentValue
-//                }
-//            }
-//        }
-//    }
     
     
 //    //Check the Rows

@@ -165,7 +165,7 @@ final class SodukuBeDamnedTests: XCTestCase {
     }
 
     func testColumnFunc() {
-        let box1 = Box(sp1: 1, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 2, sp9: 0)
+        let box1 = Box(sp1: 9, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 2, sp9: 0)
         let box2 = Box(sp1: 0, sp2: 2, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 4, sp8: 0, sp9: 0)
         let box3 = Box(sp1: 0, sp2: 0, sp3: 3, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 4)
         
@@ -192,7 +192,7 @@ final class SodukuBeDamnedTests: XCTestCase {
         //let col8 = board.columns[Board.Cols.col8]!.map { $0.finalValue }
         //let col9 = board.columns[Board.Cols.col9]!.map { $0.finalValue }
         
-        XCTAssertEqual(col1, [1,0,0,2,1,8,0,0,0])
+        XCTAssertEqual(col1, [9,0,0,2,1,8,0,0,0])
         XCTAssertEqual(col2, [0,0,2,0,9,1,0,0,0])
         XCTAssertEqual(col3, [0,0,0,6,4,1,0,0,0])
         XCTAssertEqual(col4, [0,0,4,3,3,2,0,5,9])
@@ -201,6 +201,12 @@ final class SodukuBeDamnedTests: XCTestCase {
         //XCTAssertEqual(col7, [0,4,0,8,2,1,0,9,0])
         //XCTAssertEqual(col8, [2,0,0,1,3,0,0,9,0])
         //XCTAssertEqual(col9, [0,0,4,1,2,7,0,0,5])
+        
+        // also test the Column Update Function for Column 1
+        board.updateColumn(col: Board.Cols.col1)
+        let ans = box1.space2.availableValues
+        XCTAssertTrue(ans.contains(3))
+        
     }
     
     // test that the spaces model is working
@@ -218,6 +224,7 @@ final class SodukuBeDamnedTests: XCTestCase {
         XCTAssertEqual(box3Spaces, [0,0,3,0,0,0,0,0,4])
         
     }
+    
 
 
 

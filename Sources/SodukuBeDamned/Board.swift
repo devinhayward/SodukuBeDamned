@@ -4,7 +4,7 @@ public struct Box {
         var availableValues = [1,2,3,4,5,6,7,8,9]
         var remainingValues: [Int] = []
         var currentValue = 0
-        var finalValue = 0
+        public var finalValue = 0
     }
     
     public var space1 = Space()
