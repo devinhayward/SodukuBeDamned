@@ -1,6 +1,6 @@
 # SudokuBeDamned
 
-A model for Soduku. Maybe this will solve, for me, my frustrations :)
+A model for Sudoku. Maybe this will solve, for me, my frustrations :)
 
 Goals:
 
