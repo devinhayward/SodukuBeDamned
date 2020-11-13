@@ -18,6 +18,9 @@ public extension Board {
         // check that no duplicate values have been initialized in the column. Utilize a Set to check this.
         var set = Set<Int>()
         for space in spaces.map({ $0.finalValue }) {
+            
+            guard space != 0 else { return }
+            
             let num = set.insert(space)
             
             if num.inserted == false {

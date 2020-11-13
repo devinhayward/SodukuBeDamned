@@ -1,7 +1,7 @@
 import XCTest
 
-import SodukuBeDamnedTests
+import SudokuBeDamnedTests
 
 var tests = [XCTestCaseEntry]()
-tests += SodukuBeDamnedTests.allTests()
+tests += SudokuBeDamnedTests.allTests()
 XCTMain(tests)

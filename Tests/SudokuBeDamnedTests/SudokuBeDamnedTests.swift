@@ -1,7 +1,7 @@
 import XCTest
-@testable import SodukuBeDamned
+@testable import SudokuBeDamned
 
-final class SodukuBeDamnedTests: XCTestCase {
+final class SudokuBeDamnedTests: XCTestCase {
     func testBoardSet() {
         // Initial test to set up a single final value and check a single space; this is the syntax for checking a single space currently.
         
@@ -225,9 +225,6 @@ final class SodukuBeDamnedTests: XCTestCase {
         
     }
     
-
-
-
     static var allTests = [
         ("testBoardSet", testBoardSet), ("testRow2", testRow2), ("testRow3", testRow3),
         ("testRow4", testRow4), ("testRow5", testRow5), ("testRow6", testRow6),
