@@ -162,6 +162,12 @@ final class SudokuBeDamnedTests: XCTestCase {
         
         XCTAssertEqual(row1, [1,0,0,0,2,0,0,0,3])
         XCTAssertEqual(row9, [0,2,0,9,0,0,0,0,4])
+        
+        // test the updateRow function here for Row1; is working here.
+        board.updateRow(row: Board.Rows.row1)
+        let ans = box1.space2.availableValues
+        XCTAssertTrue(ans.contains(5))
+        
     }
 
     func testColumnFunc() {

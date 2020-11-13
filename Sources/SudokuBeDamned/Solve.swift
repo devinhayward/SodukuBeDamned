@@ -44,6 +44,45 @@ public extension Board {
             }
         }
     }
+    
+    // this Function scans through the row and updates the available numbers in each Space
+    // throws an error if there is any problems
+    // else return false and Update the Data, which will update the UI
+    
+    func updateRow(row: Board.Rows) {
+        // pass the chosen Row into the dictionary; get back an array of spaces
+        let spaces = rows[row]!
+        var currentRowValues = [Int]()
+        
+        // check that no duplicate values have been initialized in the column. Utilize a Set to check this.
+        var set = Set<Int>()
+        for space in spaces.map({ $0.finalValue }) {
+            
+            guard space != 0 else { return }
+            
+            let num = set.insert(space)
+            
+            if num.inserted == false {
+                fatalError("there was duplicate initial values in this row. That cannot happen!")
+            }
+        }
+        
+        // loop through and check for preChosen values
+        for var space in spaces {
+            if space.finalValue != 0 {
+                space.availableValues.removeAll()
+                currentRowValues.append(space.finalValue)
+            }
+        }
+        
+        // now loop through again and adjust the available values array for all empty spaces
+        for var space in spaces {
+            if space.finalValue == 0 {
+                space.availableValues.removeAll(where: { currentRowValues.contains($0) })
+                //print(space.availableValues)
+            }
+        }
+    }
         
 
     
