@@ -163,11 +163,13 @@ final class SudokuBeDamnedTests: XCTestCase {
         XCTAssertEqual(row1, [1,0,0,0,2,0,0,0,3])
         XCTAssertEqual(row9, [0,2,0,9,0,0,0,0,4])
         
-        // test the updateRow function here for Row1; is working here.
+        // test the updateRow function here for Row1 and Row9; is working here.
         board.updateRow(row: Board.Rows.row1)
+        board.updateRow(row: Board.Rows.row9)
         let ans = box1.space2.availableValues
+        let ans2 = box9.space8.availableValues
         XCTAssertTrue(ans.contains(5))
-        
+        XCTAssertTrue(ans2.contains(8))
     }
 
     func testColumnFunc() {
@@ -192,21 +194,21 @@ final class SudokuBeDamnedTests: XCTestCase {
         let col2 = board.columns[Board.Cols.col2]!.map { $0.finalValue }
         let col3 = board.columns[Board.Cols.col3]!.map { $0.finalValue }
         let col4 = board.columns[Board.Cols.col4]!.map { $0.finalValue }
-        //let col5 = board.columns[Board.Cols.col5]!.map { $0.finalValue }
-        //let col6 = board.columns[Board.Cols.col6]!.map { $0.finalValue }
-        //let col7 = board.columns[Board.Cols.col7]!.map { $0.finalValue }
-        //let col8 = board.columns[Board.Cols.col8]!.map { $0.finalValue }
-        //let col9 = board.columns[Board.Cols.col9]!.map { $0.finalValue }
+        let col5 = board.columns[Board.Cols.col5]!.map { $0.finalValue }
+        let col6 = board.columns[Board.Cols.col6]!.map { $0.finalValue }
+        let col7 = board.columns[Board.Cols.col7]!.map { $0.finalValue }
+        let col8 = board.columns[Board.Cols.col8]!.map { $0.finalValue }
+        let col9 = board.columns[Board.Cols.col9]!.map { $0.finalValue }
         
         XCTAssertEqual(col1, [9,0,0,2,1,8,0,0,0])
         XCTAssertEqual(col2, [0,0,2,0,9,1,0,0,0])
         XCTAssertEqual(col3, [0,0,0,6,4,1,0,0,0])
         XCTAssertEqual(col4, [0,0,4,3,3,2,0,5,9])
-        //XCTAssertEqual(col5, [0,0,0,9,1,3,0,0,0])
-        //XCTAssertEqual(col6, [0,0,0,4,5,0,0,8,0])
-        //XCTAssertEqual(col7, [0,4,0,8,2,1,0,9,0])
-        //XCTAssertEqual(col8, [2,0,0,1,3,0,0,9,0])
-        //XCTAssertEqual(col9, [0,0,4,1,2,7,0,0,5])
+        XCTAssertEqual(col5, [2,0,0,5,1,3,0,0,9])
+        XCTAssertEqual(col6, [0,0,0,9,5,2,0,8,0])
+        XCTAssertEqual(col7, [0,0,0,4,0,1,0,0,0])
+        XCTAssertEqual(col8, [0,0,0,0,3,0,0,0,0])
+        XCTAssertEqual(col9, [3,0,4,2,0,7,0,0,5])
         
         // also test the Column Update Function for Column 1
         board.updateColumn(col: Board.Cols.col1)
@@ -221,13 +223,16 @@ final class SudokuBeDamnedTests: XCTestCase {
         let box2 = Box(sp1: 0, sp2: 2, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 4, sp8: 0, sp9: 0)
         let box3 = Box(sp1: 0, sp2: 0, sp3: 3, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 4)
         
-        let box1Spaces = [box1.space1.finalValue, box1.space2.finalValue, box1.space3.finalValue, box1.space4.finalValue, box1.space5.finalValue, box1.space6.finalValue, box1.space7.finalValue, box1.space8.finalValue, box1.space9.finalValue]
+        let box1Spaces = [box1.spaces["space1"]!.finalValue, box1.space2.finalValue, box1.space3.finalValue, box1.space4.finalValue, box1.space5.finalValue, box1.space6.finalValue, box1.space7.finalValue, box1.space8.finalValue, box1.space9.finalValue]
         let box2Spaces = [box2.space1.finalValue, box2.space2.finalValue, box2.space3.finalValue, box2.space4.finalValue, box2.space5.finalValue, box2.space6.finalValue, box2.space7.finalValue, box2.space8.finalValue, box2.space9.finalValue]
         let box3Spaces = [box3.space1.finalValue, box3.space2.finalValue, box3.space3.finalValue, box3.space4.finalValue, box3.space5.finalValue, box3.space6.finalValue, box3.space7.finalValue, box3.space8.finalValue, box3.space9.finalValue]
         
         XCTAssertEqual(box1Spaces, [1,0,0,0,0,0,0,2,0])
         XCTAssertEqual(box2Spaces, [0,2,0,0,0,0,4,0,0])
         XCTAssertEqual(box3Spaces, [0,0,3,0,0,0,0,0,4])
+        
+        // test the boxUpdate function here for Box 1
+        
         
     }
     
