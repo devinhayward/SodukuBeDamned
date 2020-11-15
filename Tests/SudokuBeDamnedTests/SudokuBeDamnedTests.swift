@@ -14,6 +14,8 @@ final class SudokuBeDamnedTests: XCTestCase {
         XCTAssertEqual(board.boxState[Board.BoxNames.box5]!.space4.finalValue, 5)
     }
     
+    
+    // TODO: Combine all the Row testing into 1 test
     func testRow2() {
         let box1 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 4, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 0)
         let box2 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 0, sp5: 5, sp6: 0, sp7: 0, sp8: 0, sp9: 0)
@@ -217,23 +219,37 @@ final class SudokuBeDamnedTests: XCTestCase {
         
     }
     
-    // test that the spaces model is working
+    // test that the box/spaces model is working
     func testSpaces() {
         let box1 = Box(sp1: 1, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 2, sp9: 0)
         let box2 = Box(sp1: 0, sp2: 2, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 4, sp8: 0, sp9: 0)
         let box3 = Box(sp1: 0, sp2: 0, sp3: 3, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 4)
         
-        let box1Spaces = [box1.spaces["space1"]!.finalValue, box1.space2.finalValue, box1.space3.finalValue, box1.space4.finalValue, box1.space5.finalValue, box1.space6.finalValue, box1.space7.finalValue, box1.space8.finalValue, box1.space9.finalValue]
-        let box2Spaces = [box2.space1.finalValue, box2.space2.finalValue, box2.space3.finalValue, box2.space4.finalValue, box2.space5.finalValue, box2.space6.finalValue, box2.space7.finalValue, box2.space8.finalValue, box2.space9.finalValue]
-        let box3Spaces = [box3.space1.finalValue, box3.space2.finalValue, box3.space3.finalValue, box3.space4.finalValue, box3.space5.finalValue, box3.space6.finalValue, box3.space7.finalValue, box3.space8.finalValue, box3.space9.finalValue]
+        let box1Spaces = box1.spaces.map({ $0.finalValue })
+        let box2Spaces = box2.spaces.map({ $0.finalValue })
+        let box3Spaces = box3.spaces.map({ $0.finalValue })
         
         XCTAssertEqual(box1Spaces, [1,0,0,0,0,0,0,2,0])
         XCTAssertEqual(box2Spaces, [0,2,0,0,0,0,4,0,0])
         XCTAssertEqual(box3Spaces, [0,0,3,0,0,0,0,0,4])
         
-        // test the boxUpdate function here for Box 1
+        // test the boxUpdate function here for Box 1. Need to instantiate the entire board now.
+        let box4 = Box(sp1: 2, sp2: 0, sp3: 6, sp4: 1, sp5: 9, sp6: 4, sp7: 8, sp8: 1, sp9: 1)
+        let box5 = Box(sp1: 3, sp2: 5, sp3: 9, sp4: 3, sp5: 1, sp6: 5, sp7: 2, sp8: 3, sp9: 2)
+        let box6 = Box(sp1: 4, sp2: 0, sp3: 2, sp4: 0, sp5: 3, sp6: 0, sp7: 1, sp8: 0, sp9: 7)
         
+        let box7 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 0)
+        let box8 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 5, sp5: 0, sp6: 8, sp7: 9, sp8: 9, sp9: 0)
+        let box9 = Box(sp1: 0, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 0, sp9: 5)
         
+        let dmhInitialState = [Board.BoxNames.box1:box1, Board.BoxNames.box2:box2, Board.BoxNames.box3:box3,
+                               Board.BoxNames.box4:box4,Board.BoxNames.box5:box5, Board.BoxNames.box6:box6, Board.BoxNames.box7:box7, Board.BoxNames.box8:box8, Board.BoxNames.box9:box9]
+        
+        let board = Board(initialBoard: dmhInitialState)
+        board.updateBox(box: Board.BoxNames.box1)
+        
+        let ans = board.boxState[Board.BoxNames.box1]!.space2.availableValues
+        XCTAssertEqual(ans, [3,4,5,6,7,8,9])
     }
     
     static var allTests = [

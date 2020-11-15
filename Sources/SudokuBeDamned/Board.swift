@@ -17,7 +17,7 @@ public struct Box {
     public var space8 = Space()
     public var space9 = Space()
     
-    public var spaces: [String: Space]
+    public var spaces: [Space]
     
     // allow to initialize the box spaces with a set final value; also provide the spaces Dictionary to access these spaces with the correct Key
     public init(sp1: Int, sp2: Int, sp3: Int, sp4: Int, sp5: Int, sp6: Int, sp7: Int, sp8: Int, sp9: Int) {
@@ -32,8 +32,7 @@ public struct Box {
         self.space8.finalValue = sp8
         self.space9.finalValue = sp9
         
-        self.spaces = ["space1": self.space1, "space2": self.space2, "space3": self.space3, "space4": self.space4, "space5": self.space5,
-                       "space6": self.space6, "space7": self.space7, "space8": self.space8, "space9": self.space9]
+        self.spaces = [self.space1, self.space2, self.space3, self.space4, self.space5, self.space6, self.space7, self.space8, self.space9]
     }
     
     // allow to initialize with a zero box
@@ -48,8 +47,7 @@ public struct Box {
         self.space8 = Space()
         self.space9 = Space()
         
-        self.spaces = ["space1": self.space1, "space2": self.space2, "space3": self.space3, "space4": self.space4, "space5": self.space5,
-                       "space6": self.space6, "space7": self.space7, "space8": self.space8, "space9": self.space9]
+        self.spaces = [self.space1, self.space2, self.space3, self.space4, self.space5, self.space6, self.space7, self.space8, self.space9]
     }
 }
 
