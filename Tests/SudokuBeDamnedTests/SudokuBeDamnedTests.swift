@@ -220,6 +220,8 @@ final class SudokuBeDamnedTests: XCTestCase {
     }
     
     // test that the box/spaces model is working
+    
+    // TODO: Need to rewrite this test to deeper test the spaces model; and greater Box model as right now it is not mutating.
     func testSpaces() {
         let box1 = Box(sp1: 1, sp2: 0, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 0, sp8: 2, sp9: 0)
         let box2 = Box(sp1: 0, sp2: 2, sp3: 0, sp4: 0, sp5: 0, sp6: 0, sp7: 4, sp8: 0, sp9: 0)
@@ -245,8 +247,8 @@ final class SudokuBeDamnedTests: XCTestCase {
         let dmhInitialState = [Board.BoxNames.box1:box1, Board.BoxNames.box2:box2, Board.BoxNames.box3:box3,
                                Board.BoxNames.box4:box4,Board.BoxNames.box5:box5, Board.BoxNames.box6:box6, Board.BoxNames.box7:box7, Board.BoxNames.box8:box8, Board.BoxNames.box9:box9]
         
-        let board = Board(initialBoard: dmhInitialState)
-        board.updateBox(box: Board.BoxNames.box1)
+        var board = Board(initialBoard: dmhInitialState)
+        board.updateBox(box: board.boxState[Board.BoxNames.box1]!)
         
         let ans = board.boxState[Board.BoxNames.box1]!.space2.availableValues
         XCTAssertEqual(ans, [3,4,5,6,7,8,9])

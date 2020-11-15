@@ -89,14 +89,13 @@ public extension Board {
     
     // TODO: combine Row, Column and Box Update into 1 function
     
-    func updateBox(box: Board.BoxNames) {
+    mutating func updateBox(box: Box) {
         // grab the current spaces from the chosen box
-        let spaces = boxState[box]!.spaces
         var currentBoxValues = [Int]()
         
         // check that no duplicate values exist in the box. Utilize a Set to check this.
         var set = Set<Int>()
-        for space in spaces.map({ $0.finalValue })  {
+        for space in box.spaces.map({ $0.finalValue })  {
             
             if space != 0 {
                 let num = set.insert(space)
@@ -108,7 +107,7 @@ public extension Board {
         }
         
         // loop through and check for existing values
-        for var space in spaces {
+        for var space in box.spaces {
             if space.finalValue != 0 {
                 space.availableValues.removeAll()
                 currentBoxValues.append(space.finalValue)
@@ -116,9 +115,9 @@ public extension Board {
         }
         
         // now loop through again and adjust the available values array for all empty spaces
-        for var space2 in spaces {
-            if space2.finalValue == 0 {
-                space2.availableValues.removeAll(where: { currentBoxValues.contains($0) })
+        for var space in box.spaces {
+            if space.finalValue == 0 {
+                space.availableValues.removeAll(where: { currentBoxValues.contains($0) })
                 //print(space.availableValues)
             }
         }
