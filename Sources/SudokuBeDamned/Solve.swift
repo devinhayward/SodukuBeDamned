@@ -7,6 +7,12 @@
 
 public extension Board {
     
+    // TODO: write a mutating function to allow us to update a box
+    mutating func boxZero(box: Box, boxName: Board.BoxNames) {
+        
+        boxState[boxName] = box
+    }
+    
     // this Function scans through the column and updates the available numbers in each Space
     // if all the Spaces are set -> Return True
     // else return false and Update the Data, which will update the UI

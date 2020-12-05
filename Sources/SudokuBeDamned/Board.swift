@@ -53,17 +53,30 @@ public struct Box {
 
 public struct Board {
     
-    // need to allow for the user to initialize the state of the board. We will lock this state in for the record and then copy over to the board state
-    let initialState: [BoxNames: Box]
+    var box1: Box
+    var box2: Box
+    var box3: Box
+    var box4: Box
+    var box5: Box
+    var box6: Box
+    var box7: Box
+    var box8: Box
+    var box9: Box
     
-    // state for the board; a dictionary of boxes
-    public var boxState: [BoxNames: Box]
-    
-    // DONE: write an init that puts everything into place. Need to feed it a dictionary representing the initial state of the board.
-    public init(initialBoard: [BoxNames: Box]) {
-        self.boxState = initialBoard
-        self.initialState = initialBoard
+    // blank init
+    public init() {
+        self.box1 = Box()
+        self.box2 = Box()
+        self.box3 = Box()
+        self.box4 = Box()
+        self.box5 = Box()
+        self.box6 = Box()
+        self.box7 = Box()
+        self.box8 = Box()
+        self.box9 = Box()
+        
     }
+    
 }
 
 public extension Board {
