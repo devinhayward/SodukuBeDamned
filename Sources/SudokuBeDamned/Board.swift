@@ -17,7 +17,9 @@ public struct Box {
     public var space8 = Space()
     public var space9 = Space()
     
-    public var spaces: [Space]
+    public var spaces: [Space] //{
+        //[space1, space2, space3, space4, space5, space6, space7, space8, space9]
+    //}
     
     // allow to initialize the box spaces with a set final value; also provide the spaces Dictionary to access these spaces with the correct Key
     public init(sp1: Int, sp2: Int, sp3: Int, sp4: Int, sp5: Int, sp6: Int, sp7: Int, sp8: Int, sp9: Int) {
@@ -74,7 +76,6 @@ public struct Board {
         self.box7 = Box()
         self.box8 = Box()
         self.box9 = Box()
-        
     }
     
 }
@@ -91,8 +92,4 @@ public extension Board {
     enum Cols: String {
         case col1, col2, col3, col4, col5, col6, col7, col8, col9
     }
-    
-    // reset to inital state; used when an invalid state is found elsewhere
-    
-    
 }

@@ -32,9 +32,9 @@ public extension Board {
     }
     
     func Col3() -> [Box.Space] {
-        let colA = [boxState[BoxNames.box1]!.space3,boxState[BoxNames.box1]!.space6,boxState[BoxNames.box1]!.space9]
-        let colB = [boxState[BoxNames.box4]!.space3,boxState[BoxNames.box4]!.space6,boxState[BoxNames.box4]!.space9]
-        let colC = [boxState[BoxNames.box7]!.space3,boxState[BoxNames.box7]!.space6,boxState[BoxNames.box7]!.space9]
+        let colA = [box1.space3, box1.space6, box1.space9]
+        let colB = [box4.space3, box4.space6, box4.space9]
+        let colC = [box7.space3, box7.space6, box7.space9]
         
         var final = colA
         final.append(contentsOf: colB)
@@ -44,9 +44,9 @@ public extension Board {
     }
     
     func Col4() -> [Box.Space] {
-        let colA = [boxState[BoxNames.box2]!.space1,boxState[BoxNames.box2]!.space4,boxState[BoxNames.box2]!.space7]
-        let colB = [boxState[BoxNames.box5]!.space1,boxState[BoxNames.box5]!.space4,boxState[BoxNames.box5]!.space7]
-        let colC = [boxState[BoxNames.box8]!.space1,boxState[BoxNames.box8]!.space4,boxState[BoxNames.box8]!.space7]
+        let colA = [box2.space1, box2.space4, box2.space7]
+        let colB = [box5.space1, box5.space4, box5.space7]
+        let colC = [box8.space1, box8.space4, box8.space7]
         
         var final = colA
         final.append(contentsOf: colB)
@@ -56,9 +56,9 @@ public extension Board {
     }
     
     func Col5() -> [Box.Space] {
-        let colA = [boxState[BoxNames.box2]!.space2,boxState[BoxNames.box2]!.space5,boxState[BoxNames.box2]!.space8]
-        let colB = [boxState[BoxNames.box5]!.space2,boxState[BoxNames.box5]!.space5,boxState[BoxNames.box5]!.space8]
-        let colC = [boxState[BoxNames.box8]!.space2,boxState[BoxNames.box8]!.space5,boxState[BoxNames.box8]!.space8]
+        let colA = [box2.space2, box2.space5, box2.space8]
+        let colB = [box5.space2, box5.space5, box5.space8]
+        let colC = [box8.space2, box8.space5, box8.space8]
         
         var final = colA
         final.append(contentsOf: colB)
@@ -68,9 +68,9 @@ public extension Board {
     }
     
     func Col6() -> [Box.Space] {
-        let colA = [boxState[BoxNames.box2]!.space3,boxState[BoxNames.box2]!.space6,boxState[BoxNames.box2]!.space9]
-        let colB = [boxState[BoxNames.box5]!.space3,boxState[BoxNames.box5]!.space6,boxState[BoxNames.box5]!.space9]
-        let colC = [boxState[BoxNames.box8]!.space3,boxState[BoxNames.box8]!.space6,boxState[BoxNames.box8]!.space9]
+        let colA = [box2.space3, box2.space6, box2.space9]
+        let colB = [box5.space3, box5.space6, box5.space9]
+        let colC = [box8.space3, box8.space6, box8.space9]
         
         var final = colA
         final.append(contentsOf: colB)
@@ -80,9 +80,9 @@ public extension Board {
     }
     
     func Col7() -> [Box.Space] {
-        let colA = [boxState[BoxNames.box3]!.space1,boxState[BoxNames.box3]!.space4,boxState[BoxNames.box3]!.space7]
-        let colB = [boxState[BoxNames.box6]!.space1,boxState[BoxNames.box6]!.space4,boxState[BoxNames.box6]!.space7]
-        let colC = [boxState[BoxNames.box9]!.space1,boxState[BoxNames.box9]!.space4,boxState[BoxNames.box9]!.space7]
+        let colA = [box3.space1, box3.space4, box3.space7]
+        let colB = [box6.space1, box6.space4, box6.space7]
+        let colC = [box9.space1, box9.space4, box9.space7]
         
         var final = colA
         final.append(contentsOf: colB)
@@ -92,9 +92,9 @@ public extension Board {
     }
     
     func Col8() -> [Box.Space] {
-        let colA = [boxState[BoxNames.box3]!.space2,boxState[BoxNames.box3]!.space5,boxState[BoxNames.box3]!.space8]
-        let colB = [boxState[BoxNames.box6]!.space2,boxState[BoxNames.box6]!.space5,boxState[BoxNames.box6]!.space8]
-        let colC = [boxState[BoxNames.box9]!.space2,boxState[BoxNames.box9]!.space5,boxState[BoxNames.box9]!.space8]
+        let colA = [box3.space2, box3.space5, box3.space8]
+        let colB = [box6.space2, box6.space5, box6.space8]
+        let colC = [box9.space2, box9.space5, box9.space8]
         
         var final = colA
         final.append(contentsOf: colB)
@@ -104,9 +104,9 @@ public extension Board {
     }
     
     func Col9() -> [Box.Space] {
-        let colA = [boxState[BoxNames.box3]!.space3,boxState[BoxNames.box3]!.space6,boxState[BoxNames.box3]!.space9]
-        let colB = [boxState[BoxNames.box6]!.space3,boxState[BoxNames.box6]!.space6,boxState[BoxNames.box6]!.space9]
-        let colC = [boxState[BoxNames.box9]!.space3,boxState[BoxNames.box9]!.space6,boxState[BoxNames.box9]!.space9]
+        let colA = [box3.space3, box3.space6, box3.space9]
+        let colB = [box6.space3, box6.space6, box6.space9]
+        let colC = [box9.space3, box9.space6, box9.space9]
         
         var final = colA
         final.append(contentsOf: colB)

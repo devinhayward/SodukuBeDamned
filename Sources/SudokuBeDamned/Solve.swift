@@ -7,15 +7,7 @@
 
 public extension Board {
     
-    // TODO: write a mutating function to allow us to update a box
-    mutating func boxZero(box: Box, boxName: Board.BoxNames) {
-        
-        boxState[boxName] = box
-    }
-    
     // this Function scans through the column and updates the available numbers in each Space
-    // if all the Spaces are set -> Return True
-    // else return false and Update the Data, which will update the UI
     func updateColumn(col: Board.Cols) {
         // pass the chosen Column into the dictionary; get back an array of spaces
         let spaces = columns[col]!
@@ -25,18 +17,21 @@ public extension Board {
         var set = Set<Int>()
         for space in spaces.map({ $0.finalValue }) {
             
-            guard space != 0 else { return }
-            
-            let num = set.insert(space)
-            
-            if num.inserted == false {
-                fatalError("there was duplicate initial values in this column. That cannot happen!")
+            if space != 0 {
+                let num = set.insert(space)
+                
+                if num.inserted == false {
+                    fatalError("there was duplicate initial values in this column. That cannot happen!")
+                }
             }
         }
         
         // loop through and check for preChosen values
+        // below does not mutate the Board! It is read only! Therefore not working!
         for var space in spaces {
             if space.finalValue != 0 {
+                // grab the current
+                
                 space.availableValues.removeAll()
                 currentColValues.append(space.finalValue)
             }
@@ -46,7 +41,6 @@ public extension Board {
         for var space in spaces {
             if space.finalValue == 0 {
                 space.availableValues.removeAll(where: { currentColValues.contains($0) })
-                //print(space.availableValues)
             }
         }
     }
