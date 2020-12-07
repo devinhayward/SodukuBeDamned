@@ -19,6 +19,59 @@ public extension Board {
         return final
     }
     
+    mutating func mCol1Remain(space: Int = 0, newArray: [Int] = []) {
+        
+        switch space {
+        case 1:
+            box1.space1.remainingValues.removeAll()
+            if !newArray.isEmpty {
+                box1.space1.remainingValues = newArray
+            }
+        case 2:
+            box1.space4.remainingValues.removeAll()
+            if !newArray.isEmpty {
+                box1.space4.remainingValues = newArray
+            }
+        case 3:
+            box1.space7.remainingValues.removeAll()
+            if !newArray.isEmpty {
+                box1.space7.remainingValues = newArray
+            }
+        case 4:
+            box4.space1.remainingValues.removeAll()
+            if !newArray.isEmpty {
+                box4.space1.remainingValues = newArray
+            }
+        case 5:
+            box4.space4.remainingValues.removeAll()
+            if !newArray.isEmpty {
+                box4.space4.remainingValues = newArray
+            }
+        case 6:
+            box4.space7.remainingValues.removeAll()
+            if !newArray.isEmpty {
+                box4.space7.remainingValues = newArray
+            }
+        case 7:
+            box7.space1.remainingValues.removeAll()
+            if !newArray.isEmpty {
+                box7.space1.remainingValues = newArray
+            }
+        case 8:
+            box7.space4.remainingValues.removeAll()
+            if !newArray.isEmpty {
+                box7.space4.remainingValues = newArray
+            }
+        case 9:
+            box7.space7.remainingValues.removeAll()
+            if !newArray.isEmpty {
+                box7.space7.remainingValues = newArray
+            }
+        default:
+            print("Nothing")
+        }
+    }
+    
     func Col2() -> [Box.Space] {
         let colA = [box1.space2, box1.space5, box1.space8]
         let colB = [box4.space2, box4.space5, box4.space8]

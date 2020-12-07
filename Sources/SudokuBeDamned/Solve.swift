@@ -8,7 +8,7 @@
 public extension Board {
     
     // this Function scans through the column and updates the available numbers in each Space
-    func updateColumn(col: Board.Cols) {
+    mutating func updateColumn(col: Board.Cols) {
         // pass the chosen Column into the dictionary; get back an array of spaces
         let spaces = columns[col]!
         var currentColValues = [Int]()
@@ -28,21 +28,40 @@ public extension Board {
         
         // loop through and check for preChosen values
         // below does not mutate the Board! It is read only! Therefore not working!
-        for var space in spaces {
+        
+        var idx = 0
+        
+        for space in spaces {
+            // track the index
+            idx += 1
             if space.finalValue != 0 {
-                // grab the current
                 
-                space.availableValues.removeAll()
+                // mutate the board; remove all remaining values for set values
+                mCol1Remain(space: idx)
+                
                 currentColValues.append(space.finalValue)
             }
         }
         
         // now loop through again and adjust the available values array for all empty spaces
-        for var space in spaces {
-            if space.finalValue == 0 {
-                space.availableValues.removeAll(where: { currentColValues.contains($0) })
-            }
-        }
+        idx = 0
+//        let updateArray = [1,2,3,4,5,6,7,8,9].map { elem in
+//
+//            if !currentColValues.contains(elem) {
+//
+//            }
+//
+//        }
+        
+//        for space in spaces {
+//            idx += 1
+//            if space.finalValue == 0 {
+//                mCol1Remain(space: idx, newArray: updateArray)
+//
+//
+//                //space.availableValues.removeAll(where: { currentColValues.contains($0) })
+//            }
+//        }
     }
     
     // this Function scans through the row and updates the available numbers in each Space
